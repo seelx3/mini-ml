@@ -26,8 +26,8 @@ let infer (e : Syntax.exp) : typ =
   in
   infer' e
 
-  let typable (e : Syntax.exp) : bool =
-    try
-      let _ = infer e in
-      true
-    with Type_error -> false
+let typable (e : Syntax.exp) : bool =
+  try
+    let _ = infer e in
+    true
+  with Type_error -> false
