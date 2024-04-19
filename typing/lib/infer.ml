@@ -2,8 +2,8 @@ type typ = TBool | TInt
 
 exception Type_error
 
-let infer (e : Syntax.exp) : typ =
-  let rec infer' (e : Syntax.exp) : typ =
+let infer (e : Syntax.prog) : typ =
+  let rec infer' (e : Syntax.prog) : typ =
     match e with
     | Bool _b -> TBool
     | Int _n -> TInt
@@ -26,7 +26,7 @@ let infer (e : Syntax.exp) : typ =
   in
   infer' e
 
-let typable (e : Syntax.exp) : bool =
+let typable (e : Syntax.prog) : bool =
   try
     let _ = infer e in
     true

@@ -25,7 +25,7 @@
 %left INT TRUE FALSE LPAREN
 
 %start main
-%type <Syntax.exp> main
+%type <Syntax.prog> main
 
 %%
 
