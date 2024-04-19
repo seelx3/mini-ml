@@ -9,8 +9,8 @@ let whitespace = [' ' '\t' '\r' '\n']
 rule token = parse
   | whitespace         { token lexbuf }
   | integer as i       { INT (int_of_string i) }
-  | "true"             { BOOL true }
-  | "false"            { BOOL false }
+  | "true"             { TRUE }
+  | "false"            { FALSE }
   | '+'                { PLUS }
   | '<'                { LT }
   | '('                { LPAREN }
