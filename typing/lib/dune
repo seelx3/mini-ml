@@ -1,0 +1,18 @@
+(library
+ (name typing))
+
+(rule
+ (target lexer.ml)
+ (deps lexer.mll)
+ (action
+  (chdir
+   %{workspace_root}
+   (run %{bin:ocamllex} -q -o %{target} %{deps}))))
+
+(rule
+ (targets parser.ml parser.mli)
+ (deps parser.mly)
+ (action
+  (chdir
+   %{workspace_root}
+   (run %{bin:ocamlyacc} %{deps}))))

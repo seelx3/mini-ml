@@ -1,0 +1,9 @@
+(executable
+ (public_name typing)
+ (name main)
+ (libraries typing))
+
+(env
+ (dev
+  (flags
+   (:standard -warn-error -a))))
