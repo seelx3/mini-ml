@@ -1,5 +1,4 @@
-(* product type *)
-type typ = TBool | TInt | TProduct of typ * typ
+type typ = TBool | TInt | TProduct of typ * typ | TUnit
 
 exception Type_error
 
@@ -8,6 +7,7 @@ let infer (e : Syntax.prog) : typ =
     match e with
     | Bool _b -> TBool
     | Int _n -> TInt
+    | Unit -> TUnit
     | Add (p, q) -> (
       let tp = infer' p in
       let tq = infer' q in

@@ -49,4 +49,5 @@ expr:
   | SND expr { Snd($2) }
   | expr LT expr { Lt($1, $3) }
   | IF expr THEN expr ELSE expr { If($2, $4, $6) }
+  | LPAREN RPAREN { Unit }
   ;
