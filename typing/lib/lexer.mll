@@ -18,5 +18,8 @@ rule token = parse
   | "if"               { IF }
   | "then"             { THEN }
   | "else"             { ELSE }
+  | ","                { COMMA }
+  | "fst"              { FST }
+  | "snd"              { SND }
   | eof                { EOF }
   | _                  { failwith ("Unexpected character: " ^ Lexing.lexeme lexbuf) }
