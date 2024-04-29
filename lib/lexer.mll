@@ -4,6 +4,7 @@
 
 let digit = ['0'-'9']
 let integer = digit+
+let variable = ['a'-'z' 'A'-'Z']['a'-'z' 'A'-'Z' '0'-'9' '_']*
 let whitespace = [' ' '\t' '\r' '\n']
 
 rule token = parse
@@ -21,5 +22,9 @@ rule token = parse
   | ","                { COMMA }
   | "fst"              { FST }
   | "snd"              { SND }
+  | "let"              { LET }
+  | "in"               { IN }
+  | "="                { EQ }
+  | variable as v      { VAR v }
   | eof                { EOF }
   | _                  { failwith ("Unexpected character: " ^ Lexing.lexeme lexbuf) }

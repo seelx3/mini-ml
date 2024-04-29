@@ -3,7 +3,7 @@
 %}
 
 %token <int> INT
-%token <bool> BOOL
+%token <string> VAR
 
 %token PLUS 
 %token LT 
@@ -21,13 +21,17 @@
 %token THEN 
 %token ELSE 
 
+%token LET
+%token EQ
+%token IN
+
 %token EOF
 
-%nonassoc ELSE
+%nonassoc THEN ELSE EQ IN
 %left FST SND
 %left LT COMMA
 %left PLUS MINUS 
-%left INT TRUE FALSE LPAREN
+%left INT TRUE FALSE VAR LPAREN
 
 %start main
 %type <Syntax.prog> main
@@ -38,16 +42,22 @@ main:
   | expr EOF { $1 }
 ;
 
-expr:
+arg_expr:
+  | VAR { Var($1) }
   | INT { Int($1) }
   | TRUE { Bool(true) }
   | FALSE { Bool(false) }
+  | LPAREN expr RPAREN { $2 }
+
+expr:
+  | arg_expr { $1 }
   | expr PLUS expr { Add($1, $3) }
-  | LPAREN expr PLUS expr RPAREN { Add($2, $4) }
-  | LPAREN expr COMMA expr RPAREN { Product($2, $4) }
+  | expr PLUS expr { Add($1, $3) }
+  | expr COMMA expr { Product($1, $3) }
   | FST expr { Fst($2) }
   | SND expr { Snd($2) }
   | expr LT expr { Lt($1, $3) }
   | IF expr THEN expr ELSE expr { If($2, $4, $6) }
   | LPAREN RPAREN { Unit }
+  | LET VAR EQ expr IN expr { Let($2, $4, $6) }
   ;

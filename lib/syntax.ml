@@ -8,6 +8,8 @@ type prog =
   | Product of prog * prog
   | Fst of prog
   | Snd of prog
+  | Var of string
+  | Let of string * prog * prog
 
 let rec string_of_prog = function
   | Bool b -> string_of_bool b
