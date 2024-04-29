@@ -1,5 +1,9 @@
 # simple-prog-lang
 
+## About
+
+- [WIP] ミニ関数型言語 with 型検査
+
 ## how to build
 
 ```
