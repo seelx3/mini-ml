@@ -4,19 +4,19 @@
 
 - [WIP] ミニ関数型言語 with 型検査
 
-## how to build
+## How to build
 
 ```
 dune build
 ```
 
-## how to run main.ml
+## How to run main.ml
 
 ```
 dune exec typing
 ```
 
-## how to use repl
+## How to use repl
 
 ```
 dune utop
@@ -36,12 +36,12 @@ utop # Typing.Reduction.normalize (Typing.Parse.parse "if (1 + 2) < 3 then 4 els
 - : Typing.Syntax.prog = Typing.Syntax.Int 5
 ```
 
-## how to format
+## How to format
 
 ```
 dune fmt
 ```
 
-## references
+## References
 
 - [Typing a simple programming language](https://www.lix.polytechnique.fr/Labo/Samuel.Mimram/teaching/INF551/TD/1.typing.html)
