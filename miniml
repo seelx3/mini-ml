@@ -1,0 +1,3 @@
+#!/bin/sh
+
+./_build/install/default/bin/miniml "$@"
