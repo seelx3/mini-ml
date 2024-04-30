@@ -2,7 +2,7 @@ type env = (string * Syntax.prog) list
 
 let rec reduce (e : Syntax.prog) (env : env) : (Syntax.prog * env) option =
   match (e, env) with
-  | Syntax.Var x, env -> (
+  | Syntax.Var x, _ -> (
     match List.assoc_opt x env with Some e' -> Some (e', env) | None -> None)
   | Syntax.Add (n1, n2), _ -> (
     match (n1, n2) with
@@ -55,19 +55,8 @@ let rec reduce (e : Syntax.prog) (env : env) : (Syntax.prog * env) option =
       match reduce n env with
       | Some (n', _) -> Some (Syntax.Snd n', env)
       | None -> None))
-  | Syntax.Let (x, e1, e2), env -> (
-    match e1 with
-    | Syntax.Int _ | Syntax.Bool _ -> Some (e2, (x, e1) :: env)
-    | _ -> (
-      match reduce e1 env with
-      | Some (e1', env') -> (
-        match e1' with
-        | Syntax.Int _ | Syntax.Bool _ -> Some (e2, (x, e1') :: env')
-        | _ -> Some (Syntax.Let (x, e1', e2), env'))
-      | None -> (
-        match reduce e2 env with
-        | Some (e2', _) -> Some (Syntax.Let (x, e1, e2'), env)
-        | None -> None)))
+  | Syntax.Let (x, e1, e2), env -> 
+    Some (e2, (x, e1) :: env)
   | _ -> None
 
 let normalize (e : Syntax.prog) : Syntax.prog =
