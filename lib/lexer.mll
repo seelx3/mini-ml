@@ -27,6 +27,9 @@ rule token = parse
   | "let"              { LET }
   | "="                { EQ }
   | "in"               { IN }
+  | ":"                { COLON }
+  | "Int"              { INT_T }
+  | "Bool"             { BOOL_T }
   | variable as v      { VAR v }
   | eof                { EOF }
   | _                  { failwith ("Unexpected character: " ^ Lexing.lexeme lexbuf) }

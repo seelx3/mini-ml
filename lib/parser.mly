@@ -28,6 +28,10 @@
 %token FUN
 %token ARROW
 
+%token COLON
+%token INT_T
+%token BOOL_T
+
 %token EOF
 
 %nonassoc THEN ELSE EQ IN
@@ -63,6 +67,7 @@ expr:
   | expr LT expr { Lt($1, $3) }
   | IF expr THEN expr ELSE expr { If($2, $4, $6) }
   | LPAREN RPAREN { Unit }
-  | FUN VAR ARROW expr { Fun($2, $4) }
+  | FUN VAR COLON INT_T ARROW expr { Fun($2, TInt, $6) }
+  | FUN VAR COLON BOOL_T ARROW expr { Fun($2, TBool, $6) }
   | LET VAR EQ expr IN expr { Let($2, $4, $6) }
   ;

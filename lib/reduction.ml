@@ -61,7 +61,7 @@ let rec reduce (e : prog) (env : env) : (prog * env) option =
     match reduce e1 env with
     | Some (e1', _) -> Some (Let (x, e1', e2), env)
     | None -> Some (e2, (x, e1) :: env))
-  | Fun (x, e), _ -> Some (FunVal (x, e, env), env)
+  | Fun (x, _, e), _ -> Some (FunVal (x, e, env), env)
   | App (e1, e2), env -> (
     match e1 with
     | FunVal (x, e, env') -> (
