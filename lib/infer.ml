@@ -1,4 +1,4 @@
-type typ = TBool | TInt | TProduct of typ * typ | TUnit
+type typ = TBool | TInt | TProduct of typ * typ | TUnit | T1 | T2
 
 exception Type_error
 
@@ -49,6 +49,10 @@ let infer (e : Syntax.prog) : typ =
     | Let (x, p, q), _ ->
       let tp = infer' p env in
       infer' q ((x, tp) :: env)
+    (* TODO: add type of Fun & App *)
+    | Fun (_, _), _ -> T1
+    | FunVal (_, _, _), _ -> raise Type_error
+    | App (_, _), _ -> T2
   in
   infer' e []
 

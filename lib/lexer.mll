@@ -22,9 +22,11 @@ rule token = parse
   | ","                { COMMA }
   | "fst"              { FST }
   | "snd"              { SND }
+  | "fun"              { FUN }
+  | "->"               { ARROW }
   | "let"              { LET }
-  | "in"               { IN }
   | "="                { EQ }
+  | "in"               { IN }
   | variable as v      { VAR v }
   | eof                { EOF }
   | _                  { failwith ("Unexpected character: " ^ Lexing.lexeme lexbuf) }
