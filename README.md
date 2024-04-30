@@ -1,4 +1,4 @@
-# simple-prog-lang
+# mini-ml
 
 ## About
 
@@ -10,13 +10,17 @@
 dune build
 ```
 
-## How to run main.ml
+## How to run
 
 ```
-dune exec miniml
+chmod +x miniml
+./miniml
 ```
 
-## How to use repl
+- press Ctrl+D to exit.
+
+## For developers
+### How to debug
 
 ```
 dune utop
@@ -36,7 +40,7 @@ utop # Miniml.Reduction.normalize (Miniml.Parse.parse "if (1 + 2) < 3 then 4 els
 - : Miniml.Syntax.prog = Miniml.Syntax.Int 5
 ```
 
-## How to format
+### How to format
 
 ```
 dune fmt
@@ -44,4 +48,5 @@ dune fmt
 
 ## References
 
-- [Miniml a simple programming language](https://www.lix.polytechnique.fr/Labo/Samuel.Mimram/teaching/INF551/TD/1.miniml.html)
+- [Miniml a simple programming language - Samuel Mimram](https://www.lix.polytechnique.fr/Labo/Samuel.Mimram/teaching/INF551/TD/1.miniml.html)
+- [関数プログラミング - 亀山幸義](http://logic.cs.tsukuba.ac.jp/jikken/index.html)
