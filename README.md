@@ -48,5 +48,5 @@ dune fmt
 
 ## References
 
-- [Miniml a simple programming language - Samuel Mimram](https://www.lix.polytechnique.fr/Labo/Samuel.Mimram/teaching/INF551/TD/1.miniml.html)
+- [Miniml a simple programming language - Samuel Mimram](https://www.lix.polytechnique.fr/Labo/Samuel.Mimram/teaching/INF551/TD/1.typing.html)
 - [関数プログラミング - 亀山幸義](http://logic.cs.tsukuba.ac.jp/jikken/index.html)
