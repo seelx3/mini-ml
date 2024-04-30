@@ -1,5 +1,5 @@
 (library
- (name typing))
+ (name miniml))
 
 (rule
  (target lexer.ml)

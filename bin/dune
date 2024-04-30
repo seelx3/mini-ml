@@ -1,7 +1,7 @@
 (executable
- (public_name typing)
+ (public_name miniml)
  (name main)
- (libraries typing))
+ (libraries miniml))
 
 (env
  (dev

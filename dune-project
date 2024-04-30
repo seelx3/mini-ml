@@ -1,6 +1,6 @@
 (lang dune 3.15)
 
-(name typing)
+(name miniml)
 
 (generate_opam_files true)
 
@@ -16,9 +16,9 @@
 ; (documentation https://url/to/documentation)
 
 (package
- (name typing)
- (synopsis "typing")
- (description "typing a simple programming language")
+ (name miniml)
+ (synopsis "miniml")
+ (description "miniml a simple programming language")
  (depends ocaml dune)
  (tags
   (topics "ocaml")))

@@ -1,7 +1,7 @@
-open Typing.Parse
-open Typing.Infer
-open Typing.Reduction
-open Typing.Syntax
+open Miniml.Parse
+open Miniml.Infer
+open Miniml.Reduction
+open Miniml.Syntax
 
 let () =
   if Array.length Sys.argv = 1 then (
@@ -24,6 +24,6 @@ let () =
   else
     let arg1 = Sys.argv.(1) in
     match arg1 with
-    | "--help" -> Printf.printf "Usage: ./typing [file]\n"
+    | "--help" -> Printf.printf "Usage: ./miniml [file]\n"
     (* TODO: exec file *)
     | _ -> Printf.printf "file: %s\n" arg1
