@@ -11,7 +11,7 @@ let () =
       try
         let line = read_line () in
         (* TODO: refactor this line *)
-        let line = String.sub line 0 ((String.length line) - 2) in
+        let line = String.sub line 0 (String.length line - 2) in
         let command = parse line in
         let isTypable = typable command in
         match isTypable with

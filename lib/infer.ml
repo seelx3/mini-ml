@@ -49,8 +49,8 @@ let infer (e : prog) : typ =
     | Let (x, p, q) ->
       let tp = infer' p env in
       infer' q ((x, tp) :: env)
-    | Fun (_, tx, p) ->
-      let tp = infer' p env in
+    | Fun (x, tx, p) ->
+      let tp = infer' p ((x, tx) :: env) in
       TArraow (tx, tp)
     | App (p, q) -> (
       let tp = infer' p env in
