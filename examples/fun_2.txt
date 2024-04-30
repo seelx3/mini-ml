@@ -1,0 +1,4 @@
+let f = fun x:Int -> x + x in
+  let g = fun x:Int -> x + x + x in
+    let x = 2 in
+      f (g x)
