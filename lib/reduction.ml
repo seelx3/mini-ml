@@ -57,7 +57,24 @@ let rec reduce (e : prog) (env : env) : (prog * env) option =
       match reduce n env with
       | Some (n', _) -> Some (Snd n', env)
       | None -> None))
-  | Let (x, e1, e2), env -> Some (e2, (x, e1) :: env)
+  | Let (x, e1, e2), env -> (
+    match reduce e1 env with
+    | Some (e1', _) -> Some (Let (x, e1', e2), env)
+    | None -> Some (e2, (x, e1) :: env))
+  | Fun (x, e), _ -> Some (FunVal (x, e, env), env)
+  | App (e1, e2), env -> (
+    match e1 with
+    | FunVal (x, e, env') -> (
+      match reduce e2 env with
+      | Some (e2', _) -> Some (App (e1, e2'), env)
+      | None -> (
+        match reduce e ((x, e2) :: env') with
+        | Some (e', _) -> Some (App (FunVal (x, e', env'), e2), env)
+        | None -> Some (e, env)))
+    | _ -> (
+      match reduce e1 env with
+      | Some (e1', _) -> Some (App (e1', e2), env)
+      | None -> None))
   | _ -> None
 
 let normalize (e : prog) : prog =
