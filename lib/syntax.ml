@@ -1,3 +1,5 @@
+type typ = TBool | TInt | TProduct of typ * typ | TUnit | TArraow of typ * typ
+
 type prog =
   | Bool of bool
   | Int of int
@@ -10,6 +12,9 @@ type prog =
   | Snd of prog
   | Var of string
   | Let of string * prog * prog
+  | Fun of string * typ * prog
+  | FunVal of string * prog * (string * prog) list
+  | App of prog * prog
 
 let rec string_of_prog = function
   | Bool b -> string_of_bool b
