@@ -26,7 +26,7 @@ chmod +x miniml
 dune utop
 ```
 
-- Check `typable` function like this:
+- Check `infer` function like this:
 
 ```
 utop # Miniml.Infer.infer (Miniml.Parse.parse "if (1 + 2) < 3 then 4 else 5");;
